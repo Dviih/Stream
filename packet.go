@@ -136,3 +136,7 @@ func (stream *pcStream) Close() error {
 	return nil
 }
 
+func (stream *pcStream) Addr() net.Addr {
+	return stream.addr
+}
+
