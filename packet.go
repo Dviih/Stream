@@ -148,3 +148,7 @@ func (stream *pcStream) Encode(v interface{}) error {
 	return stream.encoder.Encode(v)
 }
 
+func (stream *pcStream) Decode(v interface{}) error {
+	return stream.decoder.Decode(v)
+}
+
