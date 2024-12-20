@@ -19,3 +19,8 @@
 
 package stream
 
+type Addr struct {
+	network string
+	address string
+}
+
