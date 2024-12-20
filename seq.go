@@ -32,3 +32,11 @@ type SeqListener struct {
 	addr net.Addr
 }
 
+func (listener *SeqListener) Close() error {
+	if listener.l == nil {
+		return nil
+	}
+
+	return listener.l.Close()
+}
+
