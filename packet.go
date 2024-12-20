@@ -71,3 +71,14 @@ func (listener *PacketListener) Addr() net.Addr {
 	return listener.pc.LocalAddr()
 }
 
+func (listener *PacketListener) Accept() (Stream, error) {
+	name := <-listener.c
+
+	m, ok := listener.m[name]
+	if !ok {
+		return nil, errors.New("invalid")
+	}
+
+	return Packet(listener.pc, m.addr, m.buffer), nil
+}
+
