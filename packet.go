@@ -63,3 +63,11 @@ func (listener *PacketListener) Listen() error {
 	return nil
 }
 
+func (listener *PacketListener) Addr() net.Addr {
+	if listener.pc == nil {
+		return listener.addr
+	}
+
+	return listener.pc.LocalAddr()
+}
+
