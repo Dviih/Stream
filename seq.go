@@ -95,3 +95,7 @@ func (stream *seqStream) Encode(v interface{}) error {
 	return stream.encoder.Encode(v)
 }
 
+func (stream *seqStream) Decode(v interface{}) error {
+	return stream.decoder.Decode(v)
+}
+
