@@ -32,3 +32,13 @@ type ba struct {
 	addr   net.Addr
 }
 
+type PacketListener struct {
+	ctx context.Context
+
+	pc   net.PacketConn
+	addr net.Addr
+
+	m map[string]*ba
+	c chan string
+}
+
