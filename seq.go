@@ -76,3 +76,10 @@ func NewSeqListener(ctx context.Context, addr net.Addr) Listener {
 	}
 }
 
+type seqStream struct {
+	conn net.Conn
+
+	encoder *bin.Encoder
+	decoder *bin.Decoder
+}
+
