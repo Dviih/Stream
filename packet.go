@@ -120,3 +120,11 @@ func NewPacketListener(ctx context.Context, addr net.Addr) Listener {
 	}
 }
 
+type pcStream struct {
+	pc   net.PacketConn
+	addr net.Addr
+
+	encoder *bin.Encoder
+	decoder *bin.Decoder
+}
+
