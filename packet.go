@@ -128,3 +128,11 @@ type pcStream struct {
 	decoder *bin.Decoder
 }
 
+func (stream *pcStream) Close() error {
+	if _, err := stream.pc.WriteTo(nil, stream.Addr()); err != nil {
+		return err
+	}
+
+	return nil
+}
+
