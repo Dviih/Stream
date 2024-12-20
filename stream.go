@@ -33,3 +33,11 @@ type Listener interface {
 	Accept() (Stream, error)
 }
 
+type Stream interface {
+	io.Closer
+
+	Addr() net.Addr
+	Encode(interface{}) error
+	Decode(interface{}) error
+}
+
