@@ -73,3 +73,11 @@ func Listen(family Family, address string) Listener {
 	}
 }
 
+func Dial(family Family, address string) (Stream, error) {
+	conn, err := net.Dial(string(family), address)
+	if err != nil {
+		return nil, err
+	}
+
+	return Conn(conn), nil
+}
