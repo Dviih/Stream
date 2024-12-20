@@ -42,3 +42,11 @@ type PacketListener struct {
 	c chan string
 }
 
+func (listener *PacketListener) Close() error {
+	if listener.pc == nil {
+		return nil
+	}
+
+	return listener.pc.Close()
+}
+
