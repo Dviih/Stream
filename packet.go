@@ -152,3 +152,13 @@ func (stream *pcStream) Decode(v interface{}) error {
 	return stream.decoder.Decode(v)
 }
 
+func Packet(pc net.PacketConn, addr net.Addr, b *buffer.Buffer) Stream {
+	stream := &pcStream{
+		pc:      pc,
+		addr:    addr,
+		decoder: bin.NewDecoder(b),
+	}
+	stream.encoder = bin.NewEncoder(stream)
+
+	return stream
+}
