@@ -87,3 +87,7 @@ func (stream *seqStream) Close() error {
 	return stream.conn.Close()
 }
 
+func (stream *seqStream) Addr() net.Addr {
+	return stream.conn.RemoteAddr()
+}
+
