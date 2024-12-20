@@ -19,6 +19,8 @@
 
 package stream
 
+import "net"
+
 type Addr struct {
 	network string
 	address string
@@ -32,3 +34,9 @@ func (addr *Addr) String() string {
 	return addr.address
 }
 
+func NewAddr(network, address string) net.Addr {
+	return &Addr{
+		network: network,
+		address: address,
+	}
+}
