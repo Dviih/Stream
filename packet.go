@@ -82,3 +82,32 @@ func (listener *PacketListener) Accept() (Stream, error) {
 	return Packet(listener.pc, m.addr, m.buffer), nil
 }
 
+func (listener *PacketListener) handler() {
+	for {
+		data := make([]byte, 512)
+
+		n, addr, err := listener.pc.ReadFrom(data)
+		if err != nil {
+			return
+		}
+
+		name := addr.Network() + addr.String()
+
+		m, ok := listener.m[name]
+		if !ok {
+			b := buffer.New()
+			_, _ = b.Write(data[:n])
+
+			listener.m[name] = &ba{
+				buffer: b,
+				addr:   addr,
+			}
+
+			listener.c <- name
+			continue
+		}
+
+		_, _ = m.buffer.Write(data[:n])
+	}
+}
+
