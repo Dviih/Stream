@@ -24,3 +24,7 @@ type Addr struct {
 	address string
 }
 
+func (addr *Addr) Network() string {
+	return addr.network
+}
+
