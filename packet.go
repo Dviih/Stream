@@ -140,3 +140,7 @@ func (stream *pcStream) Addr() net.Addr {
 	return stream.addr
 }
 
+func (stream *pcStream) Write(data []byte) (int, error) {
+	return stream.pc.WriteTo(data, stream.Addr())
+}
+
