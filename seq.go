@@ -69,3 +69,10 @@ func (listener *SeqListener) Accept() (Stream, error) {
 	return Conn(conn), nil
 }
 
+func NewSeqListener(ctx context.Context, addr net.Addr) Listener {
+	return &SeqListener{
+		ctx:  ctx,
+		addr: addr,
+	}
+}
+
