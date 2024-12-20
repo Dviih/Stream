@@ -28,3 +28,7 @@ func (addr *Addr) Network() string {
 	return addr.network
 }
 
+func (addr *Addr) String() string {
+	return addr.address
+}
+
