@@ -83,3 +83,7 @@ type seqStream struct {
 	decoder *bin.Decoder
 }
 
+func (stream *seqStream) Close() error {
+	return stream.conn.Close()
+}
+
