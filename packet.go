@@ -144,3 +144,7 @@ func (stream *pcStream) Write(data []byte) (int, error) {
 	return stream.pc.WriteTo(data, stream.Addr())
 }
 
+func (stream *pcStream) Encode(v interface{}) error {
+	return stream.encoder.Encode(v)
+}
+
