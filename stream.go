@@ -19,3 +19,17 @@
 
 package stream
 
+import (
+	"context"
+	"net"
+)
+
+type Listener interface {
+	io.Closer
+
+	Listen() error
+	Addr() net.Addr
+
+	Accept() (Stream, error)
+}
+
