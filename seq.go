@@ -91,3 +91,7 @@ func (stream *seqStream) Addr() net.Addr {
 	return stream.conn.RemoteAddr()
 }
 
+func (stream *seqStream) Encode(v interface{}) error {
+	return stream.encoder.Encode(v)
+}
+
