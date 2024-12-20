@@ -52,3 +52,11 @@ func (listener *SeqListener) Listen() error {
 	return nil
 }
 
+func (listener *SeqListener) Addr() net.Addr {
+	if listener.l == nil {
+		return listener.addr
+	}
+	
+	return listener.l.Addr()
+}
+
