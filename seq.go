@@ -99,3 +99,10 @@ func (stream *seqStream) Decode(v interface{}) error {
 	return stream.decoder.Decode(v)
 }
 
+func Conn(conn net.Conn) Stream {
+	return &seqStream{
+		conn:    conn,
+		encoder: bin.NewEncoder(conn),
+		decoder: bin.NewDecoder(conn),
+	}
+}
