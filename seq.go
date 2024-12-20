@@ -60,3 +60,12 @@ func (listener *SeqListener) Addr() net.Addr {
 	return listener.l.Addr()
 }
 
+func (listener *SeqListener) Accept() (Stream, error) {
+	conn, err := listener.l.Accept()
+	if err != nil {
+		return nil, err
+	}
+
+	return Conn(conn), nil
+}
+
