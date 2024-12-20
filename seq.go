@@ -40,3 +40,15 @@ func (listener *SeqListener) Close() error {
 	return listener.l.Close()
 }
 
+func (listener *SeqListener) Listen() error {
+	var lc net.ListenConfig
+
+	l, err := lc.Listen(listener.ctx, listener.addr.Network(), listener.addr.String())
+	if err != nil {
+		return err
+	}
+
+	listener.l = l
+	return nil
+}
+
