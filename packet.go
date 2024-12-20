@@ -27,3 +27,8 @@ import (
 	"net"
 )
 
+type ba struct {
+	buffer *buffer.Buffer
+	addr   net.Addr
+}
+
