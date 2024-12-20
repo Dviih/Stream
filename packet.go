@@ -111,3 +111,12 @@ func (listener *PacketListener) handler() {
 	}
 }
 
+func NewPacketListener(ctx context.Context, addr net.Addr) Listener {
+	return &PacketListener{
+		ctx:  ctx,
+		addr: addr,
+		m:    make(map[string]*ba),
+		c:    make(chan string, 64),
+	}
+}
+
