@@ -21,6 +21,7 @@ package stream
 
 import (
 	"context"
+	"io"
 	"net"
 )
 
@@ -58,4 +59,17 @@ const (
 	IP4      Family = "ip4"
 	IP6      Family = "ip6"
 )
+
+func Listen(family Family, address string) Listener {
+	addr := NewAddr(string(family), address)
+
+	switch family {
+	case TCP, TCP4, TCP6, Unix, UnixPacket:
+		return NewSeqListener(context.Background(), addr)
+	case UDP, UDP4, UDP6, UnixGram, IP, IP4, IP6:
+		return NewPacketListener(context.Background(), addr)
+	default:
+		panic("invalid listener")
+	}
+}
 
