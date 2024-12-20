@@ -25,3 +25,10 @@ import (
 	"net"
 )
 
+type SeqListener struct {
+	ctx context.Context
+
+	l    net.Listener
+	addr net.Addr
+}
+
