@@ -50,3 +50,16 @@ func (listener *PacketListener) Close() error {
 	return listener.pc.Close()
 }
 
+func (listener *PacketListener) Listen() error {
+	var lc net.ListenConfig
+
+	pc, err := lc.ListenPacket(listener.ctx, listener.addr.Network(), listener.addr.String())
+	if err != nil {
+		return err
+	}
+
+	listener.pc = pc
+	go listener.handler()
+	return nil
+}
+
