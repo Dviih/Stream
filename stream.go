@@ -41,3 +41,21 @@ type Stream interface {
 	Decode(interface{}) error
 }
 
+type Family string
+
+const (
+	TCP        Family = "tcp"
+	TCP4       Family = "tcp4"
+	TCP6       Family = "tcp6"
+	Unix       Family = "unix"
+	UnixPacket Family = "unixpacket"
+
+	UDP      Family = "udp"
+	UDP4     Family = "udp4"
+	UDP6     Family = "UDP6"
+	UnixGram Family = "unixgram"
+	IP       Family = "ip"
+	IP4      Family = "ip4"
+	IP6      Family = "ip6"
+)
+
